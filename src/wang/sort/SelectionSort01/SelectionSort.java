@@ -1,5 +1,7 @@
-package wang.sort;
+package wang.sort.SelectionSort01;
 
+
+//写一个最基本的选择排序算法
 public class SelectionSort {
 
     //该算法类不产生任何实例
