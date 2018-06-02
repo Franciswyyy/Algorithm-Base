@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
-        int N = 80000;
+        int N = 10000;
 
         //一般测试
         System.out.println("Test for random array, size = " + N + " , random range [0, " + N + "]");
@@ -16,7 +16,7 @@ public class Main {
         Integer[] arr2 = Arrays.copyOf(arr1, arr1.length);
         Integer[] arr3 = Arrays.copyOf(arr1, arr1.length);
 
-        SortTestHelper.testSort("wang.sort.InsertionSort.InsertionSort", arr1);  //原始插入
+        SortTestHelper.testSort("wang.sort.InsertionSort01.InsertionSort", arr1);  //原始插入
         SortTestHelper.testSort("wang.sort.InsertionSort02.InsertionSortoptimize", arr2);    //优化后插入
         SortTestHelper.testSort("wang.sort.SelectionSort03.SelectionSort",arr3);   //选择排序
 
@@ -27,7 +27,7 @@ public class Main {
         arr2 = Arrays.copyOf(arr1, arr1.length);
         arr3 = Arrays.copyOf(arr1, arr1.length);
 
-        SortTestHelper.testSort("wang.sort.InsertionSort.InsertionSort", arr1);  //原始插入
+        SortTestHelper.testSort("wang.sort.InsertionSort01.InsertionSort", arr1);  //原始插入
         SortTestHelper.testSort("wang.sort.InsertionSort02.InsertionSortoptimize", arr2);    //优化后插入
         SortTestHelper.testSort("wang.sort.SelectionSort03.SelectionSort",arr3);   //选择排序
         System.out.println();
@@ -41,7 +41,7 @@ public class Main {
         arr2 = Arrays.copyOf(arr1, arr1.length);
         arr3 = Arrays.copyOf(arr1, arr1.length);
 
-        SortTestHelper.testSort("wang.sort.InsertionSort.InsertionSort", arr1);  //原始插入
+        SortTestHelper.testSort("wang.sort.InsertionSort01.InsertionSort", arr1);  //原始插入
         SortTestHelper.testSort("wang.sort.InsertionSort02.InsertionSortoptimize", arr2);    //优化后插入
         SortTestHelper.testSort("wang.sort.SelectionSort03.SelectionSort",arr3);   //选择排序
     }

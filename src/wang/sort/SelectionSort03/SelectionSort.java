@@ -10,7 +10,6 @@ public class SelectionSort {
     // 目的不允许产生实例
     private SelectionSort() {
     }
-
     public static void sort(Comparable[] arr){
 
        int left = 0, right = arr.length - 1;

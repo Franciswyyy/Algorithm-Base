@@ -1,4 +1,4 @@
-package wang.sort.InsertionSort;
+package wang.sort.InsertionSort01;
 
 import wang.sortTestHelp.SortTestHelper;
 
