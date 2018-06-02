@@ -2,6 +2,8 @@ package wang.sort.BubbleSort01;
 
 import wang.sortTestHelp.SortTestHelper;
 
+import java.util.Arrays;
+
 // 最基本的冒泡排序
 public class BubbleSort {
 
@@ -25,10 +27,15 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        int N = 20;
-        Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 20);
+        int N = 40000;
+        Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 40000);
+        Integer[] arr1 = Arrays.copyOf(arr, arr.length);
+
         SortTestHelper.testSort("wang.sort.BubbleSort01.BubbleSort", arr);
-        SortTestHelper.printArray(arr);
+
+
+        SortTestHelper.testSort("wang.sort.BubbleSort02.BubbleSortOpt",arr1);
+
         return;
     }
 }
