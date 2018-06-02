@@ -1,7 +1,8 @@
 package wang.sort.InsertionSort;
 
-import wang.sort.SelectionSort03.SortTestHelper;
+import wang.sortTestHelp.SortTestHelper;
 
+// 基本的插入排序
 public class InsertionSort {
 
     // 我们的算法类不允许产生任何实例
@@ -46,7 +47,7 @@ public class InsertionSort {
 
         int N = 20000;
         Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 100000);
-        SortTestHelper.testSort("wang.sort.InsertionSort.InsertionSort", arr);
+        SortTestHelper.testSort("wang.sort.InsertionSortoptimize.InsertionSortoptimize", arr);
 
         return;
     }
