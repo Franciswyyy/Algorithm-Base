@@ -10,7 +10,7 @@ public class SelectionSort {
     private SelectionSort() {
     }
 
-    public static void selectSort(Comparable[] arr){
+    public static void sort(Comparable[] arr){
 
         int len = arr.length;
         for(int i = 0; i < len; i ++){
@@ -34,9 +34,13 @@ public class SelectionSort {
 
         int N = 20000;
         Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 100000);
-        SelectionSort.selectSort(arr);
-        SortTestHelper.printArray(arr);
+        /*SelectionSort.selectSort(arr);
+        SortTestHelper.printArray(arr);*/
+        //直接用方法直接调用
+        SortTestHelper.testSort("wang.sort.SelectionSort03.SelectionSort", arr);
         return;
     }
+
+
 
 }
