@@ -4,7 +4,7 @@ package wang.sort.SelectionSort03;
 import wang.sort.SelectionSort02.Student;
 import wang.sortTestHelp.SortTestHelper;
 
-// 用于测试算法的辅助函数
+// 优化后的选择排序    ----   每一趟中， 可以同时找到当前未处理元素的最大值和最小值
 public class SelectionSort {
 
     // 目的不允许产生实例
@@ -13,16 +13,28 @@ public class SelectionSort {
 
     public static void sort(Comparable[] arr){
 
-        int len = arr.length;
-        for(int i = 0; i < len; i ++){
-            int minIndex = i;
-            for(int j = i + 1; j < len; j ++){
-                if(arr[j].compareTo(arr[minIndex]) < 0){
-                    minIndex = j;
-                }
-            }
-            swap(arr, i, minIndex);
-        }
+       int left = 0, right = arr.length - 1;
+
+       while(left < right){
+           int minIndex = left;
+           int maxIndex = right;
+
+           if(arr[minIndex].compareTo(arr[maxIndex]) > 0){
+               swap(arr, minIndex, maxIndex);
+           }
+
+           for(int i = left + 1 ; i < right; i ++)
+               if(arr[i].compareTo(arr[minIndex]) < 0)
+                   minIndex = i;
+               else if(arr[i].compareTo(arr[maxIndex]) > 0)
+                   maxIndex = i;
+
+           swap(arr, left, minIndex);
+           swap(arr, right, maxIndex);
+
+           left ++;
+           right --;
+       }
     }
 
     private static void swap(Object[] arr, int i, int j){
