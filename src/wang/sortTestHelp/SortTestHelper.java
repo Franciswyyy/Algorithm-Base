@@ -66,6 +66,13 @@ public class SortTestHelper {
         return true;
     }
 
+    //交换数组的两个值
+    public static void swap(Object[] arr, int i, int j){
+        Object t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    }
+
     //测试sortClassName所对应的排序算法排序arr数组所得到结果的正确性和运行时间
     public static void testSort(String sortClassName, Comparable[] arr){
 
