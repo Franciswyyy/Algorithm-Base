@@ -58,8 +58,8 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int N = 1000000;
-        Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 1000000);
+        int N = 900000;
+        Integer[] arr = SortTestHelper.generateRandomArray(N, 0, 900000);
         SortTestHelper.testSort("wang.sortQuick.MergeSort01.MergeSort",arr);
 
     }
