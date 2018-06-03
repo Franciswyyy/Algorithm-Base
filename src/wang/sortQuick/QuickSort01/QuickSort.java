@@ -1,5 +1,7 @@
 package wang.sortQuick.QuickSort01;
 
+import wang.sort.InsertionSort01.InsertionSort;
+import wang.sort.InsertionSort02.InsertionSortoptimize;
 import wang.sortTestHelp.SortTestHelper;
 
 public class QuickSort {
@@ -9,6 +11,7 @@ public class QuickSort {
 
     private static int partition(Comparable[] arr, int l, int r){
 
+        SortTestHelper.swap(arr, l, (int)(Math.random()*(r-l+1)) + l);
         Comparable v = arr[l];
 
         int j = l;    // arr[l+1...j] < v ; arr[j+1...i) >
@@ -24,7 +27,10 @@ public class QuickSort {
 
     private static void sort(Comparable[] arr, int l, int r){
 
-        if(l >= r) return;
+        if( r - l <= 15){
+            InsertionSortoptimize.sort(arr, l, r);
+            return;
+        }
 
         int p = partition(arr, l, r);
         sort(arr, l, p-1);
