@@ -1,6 +1,5 @@
 package wang.sortQuick.QuickSort01;
 
-import wang.sort.InsertionSort01.InsertionSort;
 import wang.sort.InsertionSort02.InsertionSortoptimize;
 import wang.sortTestHelp.SortTestHelper;
 
