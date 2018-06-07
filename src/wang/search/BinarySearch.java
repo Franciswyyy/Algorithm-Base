@@ -7,7 +7,7 @@ public class BinarySearch {
 
     // arr为有序，在arr数组中找target
     public static int find(Comparable[] arr, Comparable target){
-
+        // 在arr[l...r]之中查找target
         int l = 0, r = arr.length - 1;
         while(l <= r){
 
