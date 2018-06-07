@@ -62,17 +62,55 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
 
     // 二分搜索树的中序遍历
     public void inOrder(){
-        //inOrder(root);
+        inOrder(root);
+    }
+
+    public void inOrderByStack(){
+        inOrderByStack(root);
     }
 
     // 二分搜索树的后序遍历
     public void postOrder(){
-        //postOrder(root);
+        postOrder(root);
+    }
+
+    public void postOrderByStack(){
+        postOrderByStack(root);
     }
 
     //********************
     //* 二分搜索树的辅助函数
     //********************
+
+
+    //中序  递归
+    private void inOrder(Node node){
+        if(node == null) return;
+        inOrder(node.left);
+        visit(node);
+        inOrder(node.right);
+    }
+
+
+    //中序  非递归
+    private void inOrderByStack(Node p){
+        if(p == null) return;
+        Stack<Node> stack = new Stack<Node>();
+        while(!stack.isEmpty() || p != null){
+
+            while(p != null){
+                stack.push(p);
+                p = p.left;
+            }
+
+            if(!stack.isEmpty()){
+                p = stack.pop();
+                visit(p);
+                p = p.right;
+            }
+        }
+    }
+
 
     //前序  递归
     private void preOrder(Node node){
@@ -90,6 +128,7 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
         stack.push(p);
         while(!stack.isEmpty()){
             p = stack.pop();
+            visit(p);
             if(p.right != null)
                 stack.push(p.right);
             if(p.left != null)
