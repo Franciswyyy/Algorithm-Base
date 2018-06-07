@@ -1,5 +1,7 @@
 package wang.search.BST;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinarySearchTree <Key extends Comparable<Key>, Value>{
@@ -78,10 +80,73 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
         postOrderByStack(root);
     }
 
+    public void levelOrder(){
+        levelOrder(root);
+    }
+
     //********************
     //* 二分搜索树的辅助函数
     //********************
 
+
+    //层次遍历
+    private void levelOrder(Node p){
+        if(p == null) return;
+        Queue<Node> q = new LinkedList<Node>();
+        q.offer(p);
+        while(!q.isEmpty()){
+            Node node = q.poll();
+            visit(node);
+            if(node.left != null) q.offer(node.left);
+            if(node.right != null) q.offer(node.right);
+        }
+    }
+
+
+    //后序  递归
+    private void postOrder(Node node){
+        if(node == null) return;
+        postOrder(node.left);
+        postOrder(node.right);
+        visit(node);
+    }
+
+
+    //后序  非递归
+
+    /**
+     * 难点在于 需要判断上次访问的结点是左子树还是右子树
+       若是左子树，则跳过根节点，先进入右子树，再来访问根节点
+       若是右子树，则直接访问根节点
+     * @param p
+     */
+    private void postOrderByStack(Node p){
+        if(p == null) return;
+        Stack<Node> stack = new Stack<Node>();
+
+        Node q = null;
+
+        while(p != null){
+            stack.push(p);
+            p = p.left;
+        }
+
+        while(!stack.isEmpty()){
+            p = stack.pop();
+
+            if(p.right != null && p.right != q){
+                stack.push(p);
+                p = p.right;
+                while(p != null){
+                    stack.push(p);
+                    p = p.left;
+                }
+            }else {
+                visit(p);
+                q = p;
+            }
+        }
+    }
 
     //中序  递归
     private void inOrder(Node node){

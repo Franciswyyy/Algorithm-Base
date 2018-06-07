@@ -29,6 +29,14 @@ public class Main {
         System.out.println("\r\n" + "inOrderByStack:");
         bst.inOrderByStack();
 
+        //测试二分搜索树的后序遍历
+        System.out.println("\r\n" + "postOrder:");
+        bst.postOrder();
+        System.out.println("\r\n" + "postOrderByStack:");
+        bst.postOrderByStack();
 
+        //测试二分搜索树的层次遍历
+        System.out.println("\r\n" + "levelOrder:");
+        bst.levelOrder();
     }
 }
