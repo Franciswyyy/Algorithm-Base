@@ -1,4 +1,4 @@
-package wang.search;
+package wang.search.BinarySearch;
 
 public class BinarySearch02 {
 

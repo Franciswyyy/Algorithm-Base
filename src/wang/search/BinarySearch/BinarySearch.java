@@ -1,4 +1,4 @@
-package wang.search;
+package wang.search.BinarySearch;
 
 //非递归二分查找
 public class BinarySearch {
