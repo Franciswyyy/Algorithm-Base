@@ -102,9 +102,9 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
 
 
     //寻找二分搜索树的最大键值
-    public Key maximun(){
+    public Key maximum(){
         assert count != 0;
-        Node maxNode = maximun(root);
+        Node maxNode = maximum(root);
         return maxNode.key;
     }
 
@@ -141,7 +141,7 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
 
         //左子树不存在
         if(node.left == null)
-            return maximun(node.left).key;
+            return maximum(node.left).key;
 
         //否则,key前驱在根节点到key的路径上
         Node preNode = predecessorFromAncestor(root, key);
@@ -170,12 +170,84 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
 
 
 
+    // 寻找key的floor值, 递归算法
+    // 如果不存在key的floor值(key比BST中的最小值还小), 返回NULL
+    public Key floor(Key key){
+
+        if( count == 0 || key.compareTo(minimun()) < 0 )
+            return null;
+
+        Node floorNode = floor(root, key);
+        return floorNode.key;
+    }
+
+    // 寻找key的ceil值, 递归算法
+    // 如果不存在key的ceil值(key比BST中的最大值还大), 返回NULL
+    public Key ceil(Key key){
+
+        if( count == 0 || key.compareTo(maximum()) > 0 )
+            return null;
+
+        Node ceilNode = ceil(root, key);
+        return ceilNode.key;
+    }
+
 
 
 
     //********************
     //* 二分搜索树的辅助函数
     //********************
+
+
+    // 在以node为根的二叉搜索树中, 寻找key的floor值所处的节点, 递归算法
+    private Node floor(Node node, Key key){
+
+        if(node == null) return null;
+
+        //如果该node的key和key相等，就是本身
+        if(node.key.compareTo(key) == 0){
+            return node;
+        }
+
+        //如果该node比key要大的话
+        if(node.key.compareTo(key) > 0){
+            return floor(node.left, key);
+        }
+
+        //如果node比key小，可能是，也能是不是
+        Node tempNode = floor(node.right, key);
+        if(tempNode != null)  return tempNode;
+        return node;   //想当于 tempNode == null
+    }
+
+
+
+    // 在以node为根的二叉搜索树中, 寻找key的ceil值所处的节点, 递归算法
+    private Node ceil(Node node, Key key){
+
+        if( node == null )
+            return null;
+
+        // 如果node的key值和要寻找的key值相等
+        // 则node本身就是key的ceil节点
+        if( node.key.compareTo(key) == 0 )
+            return node;
+
+        // 如果node的key值比要寻找的key值小
+        // 则要寻找的key的ceil节点一定在node的右子树中
+        if( node.key.compareTo(key) < 0 )
+            return ceil( node.right , key );
+
+        // 如果node->key > key
+        // 则node有可能是key的ceil节点, 也有可能不是(存在比node->key小但是大于key的其余节点)
+        // 需要尝试向node的左子树寻找一下
+        Node tempNode = ceil( node.left , key );
+        if( tempNode != null )
+            return tempNode;
+
+        return node;
+    }
 
 
 
@@ -314,10 +386,10 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
 
 
     //寻找最大节点
-    private Node maximun(Node node){
+    private Node maximum(Node node){
         if(node.right == null) return node;
 
-        return maximun(node.right);
+        return maximum(node.right);
     }
 
     //深度
@@ -522,13 +594,13 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
         // 对[0...2*N)的所有整型测试在二分搜索树中查找
         // 若i在[0...N)之间，则能查找到整型所对应的字符串
         // 若i在[N...2*N)之间，则结果为null
-        for(int i = 0 ; i < 2*N ; i ++){
+       /* for(int i = 0 ; i < 2*N ; i ++){
             String res = bst.search(new Integer(i));
             if( i < N )
                 assert res.equals(Integer.toString(i));
             else
                 assert res == null;
-        }
+        }*/
     }
 
 }
