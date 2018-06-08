@@ -125,9 +125,63 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
     }
 
 
+    //从二叉树中删除键值为key的节点
+    public void remove(Key key){
+        root = remove(root, key);
+    }
+
+
+
+
     //********************
     //* 二分搜索树的辅助函数
     //********************
+
+
+
+    //删除key的节点，返回删除节点后的二分搜索树的根
+    private Node remove(Node node, Key key){
+
+        if(node == null) return null;
+
+        if(key.compareTo(node.key) < 0){
+            node.left = remove(node.left, key);
+            return node;
+        }else if(key.compareTo(node.key) > 0){
+            node.right = remove(node.right, key);
+            return node;
+        }else{  //找到了这个点  key == node.key
+
+            //待删除节点左子树为空
+            if(node.left == null){
+                Node rightNode = node.right;
+                node.right = null;
+                count --;
+                return rightNode;
+            }
+
+            //待删除的节点右子树为空
+            if(node.right == null){
+                Node leftNode = node.left;
+                node.left = null;
+                count --;
+                return leftNode;
+            }
+
+            //待删除的左右子树都不为空， 这里找待删除节点右子树的最小节点
+            Node successor = minimun(node.right);
+            count ++;
+
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+
+            node.left = node.right = null;
+            count --;
+
+            return successor;
+        }
+    }
+
 
 
     // 删除掉以node为根的二分搜索树中的最小节点

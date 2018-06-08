@@ -48,11 +48,23 @@ public class Main {
         System.out.println("\r\n" + "min key:" + bst.minimun());
 
         //测试removeMax
-        System.out.println("Test removeMax:");
+        /*System.out.println("Test removeMax:");
         while(!bst.isEmpty()){
             System.out.print("max:" + bst.maximun() + ",");
             bst.removeMax();
             System.out.println("size:" + bst.size());
         }
+        */
+
+        //测试remove
+        System.out.println("Test remove:");
+        for( int i = 0 ; i < arr.length ; i ++ ) {
+            if (bst.contain(arr[i])) {
+                bst.remove(arr[i]);
+                System.out.println("After remove " + arr[i] + " size = " + bst.size());
+            }
+        }
+
+
     }
 }
