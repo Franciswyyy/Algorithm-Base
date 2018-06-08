@@ -38,5 +38,13 @@ public class Main {
         //测试二分搜索树的层次遍历
         System.out.println("\r\n" + "levelOrder:");
         bst.levelOrder();
+
+        //测试深度
+        System.out.println("\r\n" + "depth:" + bst.getDepth());
+
+
+        //寻找最大最小点
+        System.out.println("\r\n" + "max key:" + bst.maximun());
+        System.out.println("\r\n" + "min key:" + bst.minimun());
     }
 }

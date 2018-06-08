@@ -23,6 +23,7 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
     private Node root;
     private int count;
 
+    //构造函数，默认是一颗空的二分搜索树
     public BinarySearchTree() {
         root = null;
         count = 0;
@@ -80,13 +81,61 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
         postOrderByStack(root);
     }
 
+    //层次遍历
     public void levelOrder(){
         levelOrder(root);
     }
 
+
+    //计算二叉树的深度
+    public int getDepth(){
+        return getDepth(root);
+    }
+
+
+    //寻找二分搜索树的最小键值
+    public Key minimun(){
+        assert count != 0;
+        Node minNode =  minimun(root);
+        return minNode.key;
+    }
+
+
+    //寻找二分搜索树的最大键值
+    public Key maximun(){
+        assert count != 0;
+        Node maxNode = maximun(root);
+        return maxNode.key;
+    }
+
+
     //********************
     //* 二分搜索树的辅助函数
     //********************
+
+
+    //寻找最小节点
+    private Node minimun(Node node){
+        if(node.left == null) return node;
+
+        return minimun(node.left);
+    }
+
+
+    //寻找最大节点
+    private Node maximun(Node node){
+        if(node.right == null) return node;
+
+        return maximun(node.right);
+    }
+
+    //深度
+    private int getDepth(Node node){
+       if(node == null) return 0;
+       int left = getDepth(node.left);
+       int right  = getDepth(node.right);
+       return left > right ? left + 1 : right + 1;
+    }
 
 
     //层次遍历
@@ -113,7 +162,6 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
 
 
     //后序  非递归
-
     /**
      * 难点在于 需要判断上次访问的结点是左子树还是右子树
        若是左子树，则跳过根节点，先进入右子树，再来访问根节点
