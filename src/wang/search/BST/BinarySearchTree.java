@@ -109,9 +109,55 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
     }
 
 
+    //从二叉树中删除最小值所在节点
+    public void removeMin(){
+        if(root != null){
+            root = removeMin(root);
+        }
+    }
+
+
+    //从二叉树中删除最大值所在节点
+    public void removeMax(){
+        if(root != null){
+            root = removeMax(root);
+        }
+    }
+
+
     //********************
     //* 二分搜索树的辅助函数
     //********************
+
+
+    // 删除掉以node为根的二分搜索树中的最小节点
+    // 返回删除节点后新的二分搜索树的根
+    private Node removeMin(Node node){
+        if(node.left == null){
+            Node rightNode = node.right;    //不管有没有值
+            node.right = null;      //要删除的不指向了
+            count --;
+            return rightNode;
+        }
+
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+
+    // 删除掉以node为根的二分搜索树中的最大节点
+    // 返回删除节点后新的二分搜索树的根
+    private Node removeMax(Node node){
+        if(node.right == null){
+            Node leftNode = node.left;
+            node.left = null;
+            count --;
+            return leftNode;
+        }
+
+        node.right = removeMax(node.right);
+        return node;
+    }
 
 
     //寻找最小节点
