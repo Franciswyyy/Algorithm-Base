@@ -50,7 +50,7 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
     }
 
     // 在二分搜索树中搜索键key所对应的值。如果这个值不存在, 则返回null
-    public Value search(Key key){
+    public Node search(Key key){
         return search(root, key);
     }
 
@@ -131,11 +131,102 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
     }
 
 
+    // 查找key的前驱
+    // 如果不存在key的前驱(key不存在, 或者key是整棵二叉树中的最小值), 则返回NULL
+    public Key predecessor(Key key){
+
+        Node node = search(root, key);
+        //不存在
+        if(node == null) return null;
+
+        //左子树不存在
+        if(node.left == null)
+            return maximun(node.left).key;
+
+        //否则,key前驱在根节点到key的路径上
+        Node preNode = predecessorFromAncestor(root, key);
+        return preNode == null ? null : preNode.key;
+
+    }
+
+
+    // 查找key的后继, 递归算法
+    // 如果不存在key的后继(key不存在, 或者key是整棵二叉树中的最大值), 则返回NULL
+    public Key successor(Key key){
+
+        Node node = search(root, key);
+        // 如果key所在的节点不存在, 则key没有前驱, 返回NULL
+        if(node == null)
+            return null;
+
+        // 如果key所在的节点右子树不为空,则其右子树的最小值为key的后继
+        if(node.right != null)
+            return minimun(node.right).key;
+
+        // 否则, key的后继在从根节点到key的路径上, 在这个路径上寻找到比key大的最小值, 即为key的后继
+        Node sucNode = successorFromAncestor(root, key);
+        return sucNode == null ? null : sucNode.key;
+    }
+
+
+
+
 
 
     //********************
     //* 二分搜索树的辅助函数
     //********************
+
+
+
+    // 在以node为根的二叉搜索树中, 寻找key的祖先中,比key小的最大值所在节点, 递归算法
+    // 算法调用前已保证key存在在以node为根的二叉树中
+    Node predecessorFromAncestor(Node node, Key key){
+
+        if(node.key.compareTo(key) == 0)
+            return null;
+
+        if(key.compareTo(node.key) < 0)
+            // 如果当前节点大于key, 则当前节点不可能是比key小的最大值
+            // 向下搜索到的结果直接返回
+            return predecessorFromAncestor(node.left, key);
+        else{
+            assert key.compareTo(node.key) > 0;
+            // 如果当前节点小于key, 则当前节点有可能是比key小的最大值
+            // 向右继续搜索, 将结果存储到tempNode中
+            Node tempNode = predecessorFromAncestor(node.right, key);
+            if(tempNode != null)
+                return tempNode;
+            else
+                // 如果tempNode为空, 则当前节点即为结果
+                return node;
+        }
+    }
+
+
+    // 在以node为根的二叉搜索树中, 寻找key的祖先中,比key大的最小值所在节点, 递归算法
+    // 算法调用前已保证key存在在以node为根的二叉树中
+    Node successorFromAncestor(Node node, Key key){
+
+        if(node.key.compareTo(key) == 0)
+            return null;
+
+        if(key.compareTo(node.key) > 0)
+            // 如果当前节点小于key, 则当前节点不可能是比key大的最小值
+            // 向下搜索到的结果直接返回
+            return successorFromAncestor(node.right, key);
+        else{
+            assert(key.compareTo(node.key) < 0);
+            // 如果当前节点大于key, 则当前节点有可能是比key大的最小值
+            // 向左继续搜索, 将结果存储到tempNode中
+            Node tempNode = successorFromAncestor(node.left, key);
+            if(tempNode != null)
+                return tempNode;
+            else
+                // 如果tempNode为空, 则当前节点即为结果
+                return node;
+        }
+    }
 
 
 
@@ -386,13 +477,13 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
 
 
     //二叉树中搜索键key对应的值，如果key不存在,则返回null
-    private Value search(Node node, Key key){
+    private Node search(Node node, Key key){
         //以node为根，,搜索key所对应的value
         if(node == null){
             return null;
         }
         if(key.compareTo(node.key) == 0){
-            return node.value;
+            return node;
         }else if(key.compareTo(node.key) > 0){
             return search(node.right, key);
         }else {
