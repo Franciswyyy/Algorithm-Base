@@ -44,7 +44,7 @@ public class Main {
 
 
         //寻找最大最小点
-        System.out.println("\r\n" + "max key:" + bst.maximun());
+        System.out.println("\r\n" + "max key:" + bst.maximum());
         System.out.println("\r\n" + "min key:" + bst.minimun());
 
         //测试removeMax
