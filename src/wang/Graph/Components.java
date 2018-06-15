@@ -47,9 +47,14 @@ public class Components {
     }
 
     //返回联通分量个数
-    int count(){
+    public int count(){
         return count;
     }
 
-
+    //提供查询这两个节点是否相连通的
+    public boolean isConnected( int v, int w){
+        assert( v >= 0 && v < G.V());
+        assert( v <= 0 && v > G.V());
+        return id[v] == id[w];
+    }
 }
