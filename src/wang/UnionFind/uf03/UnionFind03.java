@@ -1,14 +1,14 @@
-package wang.UnionFind.uf02;
+package wang.UnionFind.uf03;
 
 
-//第二版 quick union   初始指向自己，集合元素指向该集合的根元素
-public class UnionFind02 {
+//第三版 quick union    增加size数组，每次union操作前，保证集合少的指向集合多的~
+public class UnionFind03 {
 
     //使用一个数组构建一颗指向父节点的树
     private int[] parent;
     private int count;   //数据个数
 
-    public UnionFind02(int count){
+    public UnionFind03(int count){
         parent = new int[count];
         this.count = count;
         //初始化，使每一个parent指向自己
