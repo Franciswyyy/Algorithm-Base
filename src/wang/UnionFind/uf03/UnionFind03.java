@@ -1,19 +1,22 @@
 package wang.UnionFind.uf03;
 
 
-//第三版 quick union    增加size数组，每次union操作前，保证集合少的指向集合多的~
+//第三版 quick union     保证每次都是最小集合指向多的集合
 public class UnionFind03 {
 
-    //使用一个数组构建一颗指向父节点的树
-    private int[] parent;
+
+    private int[] parent;  //parent[i]表示第一个元素所指向的父节点
+    private int[] size;
     private int count;   //数据个数
 
     public UnionFind03(int count){
         parent = new int[count];
+        size = new int[count];
         this.count = count;
         //初始化，使每一个parent指向自己
         for(int i = 0; i < count; i ++){
             parent[i] = i;
+            size[i] = 1;
         }
     }
 
@@ -47,7 +50,15 @@ public class UnionFind03 {
             return;
         }
 
-        parent[pRoot] = qRoot;
+        //根据两个元素所在树的元素个数不同判断合并方向
+        //将元素个数少的集合合并到元素个数多的集合上
+        if(size[pRoot] < size[qRoot]){
+            parent[pRoot] = qRoot;
+            size[qRoot] += size[pRoot];
+        }else {
+            parent[qRoot] = pRoot;
+            size[pRoot] += size[qRoot];
+        }
     }
 
 }
