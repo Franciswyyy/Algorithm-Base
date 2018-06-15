@@ -22,5 +22,9 @@ public class Main {
         // 对于UF3来说, 其时间性能依然是O(n*h)的, h为并查集表达的树的最大高度
         // 但由于UF3能更高概率的保证树的平衡, 所以性能更优
         UnionFindTestHelper.testUF3(n);
+
+        // UF4虽然相对UF3进行有了优化, 但优化的地方出现的情况较少,
+        // 所以性能更优表现的不明显, 甚至在一些数据下性能会更差
+        UnionFindTestHelper.testUF4(n);
     }
 }
