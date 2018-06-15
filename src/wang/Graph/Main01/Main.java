@@ -1,6 +1,8 @@
-package wang.Graph;
+package wang.Graph.Main01;
 
-import java.util.Iterator;
+import wang.Graph.DenseGraph;
+import wang.Graph.ReadGraph;
+import wang.Graph.SparseGraph;
 
 // 测试通过文件读取图的信息
 public class Main {
@@ -11,17 +13,6 @@ public class Main {
         String filename = "F:\\Algorithm-Base\\src\\wang\\Graph\\testG1.txt";
         SparseGraph g1 = new SparseGraph(13, false);
         ReadGraph readGraph1 = new ReadGraph(g1, filename);
-        /*
-        应用遍历每个节点的相邻节点
-        for(int i = 0; i < g1.V(); i ++){
-            Iterator<Integer> iter = g1.adj(i).iterator();
-            System.out.print("第" + i + "个顶点所相邻的结点：");
-            while(iter.hasNext()){
-                System.out.print(iter.next() + " ");
-            }
-            System.out.println();
-        }*/
-
 
 
         System.out.println("test G1 in Sparse Graph:");
