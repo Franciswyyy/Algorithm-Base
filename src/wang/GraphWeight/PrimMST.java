@@ -70,7 +70,6 @@ public class PrimMST<Weight extends Number & Comparable> {
                 }
             }
         }
-
     }
 
     // 返回最小生成树的所有边
@@ -79,7 +78,7 @@ public class PrimMST<Weight extends Number & Comparable> {
     }
 
     // 返回最小生成树的权值
-    Number result(){
+    public Number result(){
         return mstWeight;
     }
 

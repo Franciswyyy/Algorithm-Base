@@ -1,9 +1,6 @@
 package wang.GraphWeight.Main02;
 
-import wang.GraphWeight.Edge;
-import wang.GraphWeight.LazyPrimMST;
-import wang.GraphWeight.ReadWeightedGraph;
-import wang.GraphWeight.SparseWeightedGraph;
+import wang.GraphWeight.*;
 
 import java.util.List;
 import java.util.Vector;
@@ -25,6 +22,28 @@ public class Main {
         for( int i = 0 ; i < mst.size() ; i ++ )
             System.out.println(mst.get(i));
         System.out.println("The MST weight is: " + lazyPrimMST.result());
+
+        System.out.println();
+
+
+        // Test Prim MST
+        System.out.println("Test Prim MST:");
+        PrimMST<Double> primMST = new PrimMST<Double>(g);
+        List<Edge<Double>> mst1 = primMST.mstEdges();
+        for( int i = 0 ; i < mst1.size() ; i ++ )
+            System.out.println(mst1.get(i));
+        System.out.println("The MST weight is: " + primMST.result());
+
+        System.out.println();
+
+
+        // Test Kruskal
+        System.out.println("Test Kruskal:");
+        KruskalMST<Double> kruskalMST = new KruskalMST<Double>(g);
+        List<Edge<Double>> mst2 = kruskalMST.mstEdges();
+        for( int i = 0 ; i < mst2.size() ; i ++ )
+            System.out.println(mst2.get(i));
+        System.out.println("The MST weight is: " + kruskalMST.result());
 
         System.out.println();
     }
