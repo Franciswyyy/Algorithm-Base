@@ -1,7 +1,8 @@
 package wang.Graph;
 
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 // 稠密图 - 邻接矩阵
 public class DenseGraph implements Graph{
@@ -51,7 +52,7 @@ public class DenseGraph implements Graph{
     //返回图中一个顶点的所有邻边
     public Iterable<Integer> adj(int v){
         assert v >= 0 && v < n;
-        Vector<Integer> adjV = new Vector<Integer>();
+        List<Integer> adjV = new ArrayList<>();
         for(int i = 0; i < n; i ++){
             if(g[v][i]){
                 adjV.add(i);

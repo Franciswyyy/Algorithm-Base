@@ -1,6 +1,8 @@
 package wang.Graph;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
+
 
 // 稀疏图  邻接表
 public class SparseGraph implements Graph{
@@ -8,7 +10,7 @@ public class SparseGraph implements Graph{
     private int n;  // 节点数
     private int m;  // 边数
     private boolean directed;    // 是否为有向图
-    private Vector<Integer>[] g; // 图的具体数据
+    private List<Integer>[] g; // 图的具体数据
 
     public SparseGraph(int n, boolean directed) {
         assert n >= 0;
@@ -16,9 +18,9 @@ public class SparseGraph implements Graph{
         this.m = 0;   // 初始化没有任何边
         this.directed = directed;
         // g初始化为n个空的vector,表示每个g[i]都为空，即没有任何边
-        g = (Vector<Integer>[]) new Vector[n];
+        g = (ArrayList<Integer>[]) new ArrayList[n];
         for (int i = 0; i < n; i++) {
-            g[i] = new Vector<Integer>();
+            g[i] = new ArrayList<Integer>();
         }
     }
 
@@ -45,7 +47,7 @@ public class SparseGraph implements Graph{
         assert w >= 0 && w < n;
 
         for(int i = 0; i < g[v].size(); i ++){
-            if(g[v].elementAt(i) == w)
+            if(g[v].get(i) == w)
                 return true;
         }
         return false;
@@ -65,7 +67,7 @@ public class SparseGraph implements Graph{
         for( int i = 0 ; i < n ; i ++ ){
             System.out.print("vertex " + i + ":\t");
             for( int j = 0 ; j < g[i].size() ; j ++ )
-                System.out.print(g[i].elementAt(j) + "\t");
+                System.out.print(g[i].get(j) + "\t");
             System.out.println();
         }
     }

@@ -1,7 +1,10 @@
 package wang.Graph;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
+
 
 public class Path {
 
@@ -47,7 +50,7 @@ public class Path {
     }
 
     // 查询从s到w点的路径，存在res中
-    public Vector<Integer> path(int w){
+    public List<Integer> path(int w){
 
         assert hasPath(w);
 
@@ -61,7 +64,7 @@ public class Path {
         }
 
         //从栈中依次取出元素，获得顺序的从s到w的路径
-        Vector<Integer> res = new Vector<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         while(!stack.isEmpty()){
             res.add(stack.pop());
         }
@@ -73,7 +76,7 @@ public class Path {
 
         assert hasPath(w);
 
-        Vector<Integer> res = path(w);
+        List<Integer> res = path(w);
         for(int i = 0; i < res.size(); i ++){
             System.out.print(res.get(i));
             if( i == res.size()-1){
