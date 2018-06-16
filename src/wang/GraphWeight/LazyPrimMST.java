@@ -1,5 +1,7 @@
 package wang.GraphWeight;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 
@@ -9,7 +11,7 @@ public class LazyPrimMST<Weight extends Number & Comparable> {
     private WeightedGraph<Weight> G;    // 图的引用
     private MinHeap<Edge<Weight>> pq;   // 最小堆, 算法辅助数据结构
     private boolean[] marked;           // 标记数组, 在算法运行过程中标记节点i是否被访问
-    private Vector<Edge<Weight>> mst;   // 最小生成树所包含的所有边
+    private List<Edge<Weight>> mst;   // 最小生成树所包含的所有边
     private Number mstWeight;           // 最小生成树的权值
 
     // 构造函数, 使用Prim算法求图的最小生成树
@@ -19,7 +21,7 @@ public class LazyPrimMST<Weight extends Number & Comparable> {
         G = graph;
         pq = new MinHeap<Edge<Weight>>(G.E());
         marked = new boolean[G.V()];
-        mst = new Vector<Edge<Weight>>();
+        mst = new ArrayList<Edge<Weight>>();
 
         // Lazy Prim
         visit(0);
@@ -41,9 +43,9 @@ public class LazyPrimMST<Weight extends Number & Comparable> {
 
         // 计算最小生成树的权值
 
-        mstWeight = mst.elementAt(0).wt();
+        mstWeight = mst.get(0).wt();
         for( int i = 1 ; i < mst.size() ; i ++ )
-            mstWeight = mstWeight.doubleValue() + mst.elementAt(i).wt().doubleValue();
+            mstWeight = mstWeight.doubleValue() + mst.get(i).wt().doubleValue();
     }
 
     // 访问节点v
@@ -59,7 +61,7 @@ public class LazyPrimMST<Weight extends Number & Comparable> {
     }
 
     // 返回最小生成树的所有边
-    public Vector<Edge<Weight>> mstEdges(){
+    public List<Edge<Weight>> mstEdges(){
         return mst;
     };
 

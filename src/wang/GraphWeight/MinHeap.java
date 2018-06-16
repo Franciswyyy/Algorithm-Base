@@ -33,7 +33,7 @@ public class MinHeap<Item extends Comparable> {
     }
 
     //返回堆中个数
-    public int sizr(){
+    public int size(){
         return count;
     }
 

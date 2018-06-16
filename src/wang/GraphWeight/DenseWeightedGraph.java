@@ -1,6 +1,9 @@
 package wang.GraphWeight;
 
-import java.util.Vector;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 // 稠密图 - 邻接矩阵
 public class DenseWeightedGraph<Weight extends Number & Comparable>
@@ -68,7 +71,7 @@ public class DenseWeightedGraph<Weight extends Number & Comparable>
     // 由于java使用引用机制，返回一个Vector不会带来额外开销,
     public Iterable<Edge<Weight>> adj(int v) {
         assert v >= 0 && v < n;
-        Vector<Edge<Weight>> adjV = new Vector<Edge<Weight>>();
+        List<Edge<Weight>> adjV = new ArrayList<Edge<Weight>>();
         for(int i = 0 ; i < n ; i ++ )
             if( g[v][i] != null )
                 adjV.add( g[v][i] );

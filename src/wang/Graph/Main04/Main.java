@@ -21,7 +21,7 @@ public class Main {
         path.showPath(6);
 
         ShortestPath bfs = new ShortestPath(g,0);
-        System.out.print("BFS Path from 0 to 6:");
+        System.out.println("BFS Path from 0 to 6:");
         bfs.showPath(6);
     }
 }

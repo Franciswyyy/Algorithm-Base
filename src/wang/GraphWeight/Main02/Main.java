@@ -5,6 +5,7 @@ import wang.GraphWeight.LazyPrimMST;
 import wang.GraphWeight.ReadWeightedGraph;
 import wang.GraphWeight.SparseWeightedGraph;
 
+import java.util.List;
 import java.util.Vector;
 
 public class Main {
@@ -20,9 +21,9 @@ public class Main {
         // Test Lazy Prim MST
         System.out.println("Test Lazy Prim MST:");
         LazyPrimMST<Double> lazyPrimMST = new LazyPrimMST<Double>(g);
-        Vector<Edge<Double>> mst = lazyPrimMST.mstEdges();
+        List<Edge<Double>> mst = lazyPrimMST.mstEdges();
         for( int i = 0 ; i < mst.size() ; i ++ )
-            System.out.println(mst.elementAt(i));
+            System.out.println(mst.get(i));
         System.out.println("The MST weight is: " + lazyPrimMST.result());
 
         System.out.println();

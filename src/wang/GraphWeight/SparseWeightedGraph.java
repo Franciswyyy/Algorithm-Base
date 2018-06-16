@@ -1,6 +1,7 @@
 package wang.GraphWeight;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 // 稀疏图 - 邻接表
 public class SparseWeightedGraph<Weight extends Number & Comparable>
@@ -9,7 +10,7 @@ public class SparseWeightedGraph<Weight extends Number & Comparable>
     private int n;  // 节点数
     private int m;  // 边数
     private boolean directed;   // 是否为有向图
-    private Vector<Edge<Weight>>[] g;   // 图的具体数据
+    private List<Edge<Weight>>[] g;   // 图的具体数据
 
     // 构造函数
     public SparseWeightedGraph( int n , boolean directed ){
@@ -18,9 +19,9 @@ public class SparseWeightedGraph<Weight extends Number & Comparable>
         this.m = 0;    // 初始化没有任何边
         this.directed = directed;
         // g初始化为n个空的vector, 表示每一个g[i]都为空, 即没有任和边
-        g = (Vector<Edge<Weight>>[])new Vector[n];
+        g = (ArrayList<Edge<Weight>>[])new ArrayList[n];
         for(int i = 0 ; i < n ; i ++)
-            g[i] = new Vector<Edge<Weight>>();
+            g[i] = new ArrayList<Edge<Weight>>();
     }
 
     public int V(){ return n;} // 返回节点个数
