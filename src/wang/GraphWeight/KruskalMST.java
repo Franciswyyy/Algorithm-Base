@@ -58,6 +58,4 @@ public class KruskalMST<Weight extends Number & Comparable> {
         return mstWeight;
     }
 
-
-
 }
