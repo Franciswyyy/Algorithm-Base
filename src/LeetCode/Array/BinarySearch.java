@@ -2,21 +2,6 @@ package LeetCode.Array;
 
 public class BinarySearch {
 
-    public static void main(String[] args) {
-
-        int n = (int)Math.pow(10, 7);
-        Integer data[] = Util.generateOrderedArray(n);
-
-        long startTime = System.currentTimeMillis();
-        for(int i = 0 ; i < n ; i ++)
-            if(i != binarySearchRecursion(data, n, i))
-                throw new IllegalStateException("find i failed!");
-        long endTime = System.currentTimeMillis();
-
-        System.out.println("Binary Search test complete.");
-        System.out.println("Time cost: " + (endTime - startTime) + " ms");
-    }
-
     // 前闭后闭  非递归
     private static int binarySearch(Integer[] arr, int n, int target){
         int l = 0;
@@ -51,6 +36,7 @@ public class BinarySearch {
         }
     }
 
+
     //前闭后开
     private static int binarySearchOpenRight(Integer[] arr, int n, int target){
         int l = 0;
@@ -67,5 +53,21 @@ public class BinarySearch {
         }
         return -1;
     }
+
+    public static void main(String[] args) {
+
+        int n = (int)Math.pow(10, 7);
+        Integer data[] = Util.generateOrderedArray(n);
+
+        long startTime = System.currentTimeMillis();
+        for(int i = 0 ; i < n ; i ++)
+            if(i != binarySearchRecursion(data, n, i))
+                throw new IllegalStateException("find i failed!");
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Binary Search test complete.");
+        System.out.println("Time cost: " + (endTime - startTime) + " ms");
+    }
+
 
 }
