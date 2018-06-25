@@ -8,6 +8,15 @@ public class JavaUtil {
         return gcd(y, x%y);
     }
 
+    // 判断一个素数
+    public static boolean isPrime(int n){
+        for(int x = 2; x*x <= n; x ++){
+            if(n % x == 0)
+                return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         int gcd = gcd(6,8);
         System.out.println(8/gcd + "/" + 6/gcd);
