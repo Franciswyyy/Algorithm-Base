@@ -5,6 +5,13 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 
 public class Solution149 {
+    class Point {
+        int x;
+        int y;
+        Point() { x = 0; y = 0; }
+        Point(int a, int b) { x = a; y = b; }
+    }
+
 
     // 通过率  99%   可能是精度的问题
     public static int maxPoints(Point[] points) {
@@ -50,17 +57,7 @@ public class Solution149 {
         return res;
     }
 
-
-    public static void main(String[] args) {
-        Point[] p = new Point[]{new Point(1,1),new Point(2,2), new Point(3,3)};
-        System.out.println(maxPoints(p));
-    }
 }
 
 
-class Point {
-      int x;
-      int y;
-      Point() { x = 0; y = 0; }
-      Point(int a, int b) { x = a; y = b; }
-}
+
