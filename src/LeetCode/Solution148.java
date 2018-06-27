@@ -2,7 +2,7 @@ package LeetCode;
 
 public class Solution148 {
 
-    public ListNode sortList(ListNode head) {
+    public static ListNode sortList(ListNode head) {
 
         // 当不存在或者只存在一个节点的话，直接返回
         if(head == null || head.next == null) return head;
@@ -16,7 +16,7 @@ public class Solution148 {
             fast = fast.next.next;
         }
 
-        pre = null;   // 将第一条和第二条分开
+        pre.next = null;   // 将第一条和第二条分开
 
         ListNode l1 = sortList(head);
         ListNode l2 = sortList(slow);
@@ -27,7 +27,7 @@ public class Solution148 {
 
 
     // 此时两个链表都是有序的
-    public ListNode merge(ListNode l1, ListNode l2){
+    public static ListNode merge(ListNode l1, ListNode l2){
         ListNode dummy = new ListNode(0);
 
         ListNode pre = dummy;
@@ -52,5 +52,12 @@ public class Solution148 {
         }
 
         return dummy.next;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{3,2,5,1};
+        ListNode l1 = new ListNode(arr);
+
+        System.out.println(sortList(l1));
     }
 }
