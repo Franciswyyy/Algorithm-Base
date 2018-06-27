@@ -4,7 +4,6 @@ public class Solution024 {
 
     public ListNode swapPairs(ListNode head) {
 
-
         if(head == null) return null;
 
         ListNode dummy = new ListNode(0);
