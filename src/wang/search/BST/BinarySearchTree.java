@@ -479,11 +479,11 @@ public class BinarySearchTree <Key extends Comparable<Key>, Value>{
                 p = p.left;
             }
 
-            if(!stack.isEmpty()){
-                p = stack.pop();
-                visit(p);
-                p = p.right;
-            }
+            // if(!stack.isEmpty()),已经判断过的，不需要添加
+            p = stack.pop();
+            visit(p);
+            p = p.right;
+
         }
     }
 
