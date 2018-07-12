@@ -1,6 +1,6 @@
 package LeetCode;
 
-public class Solution {
+public class Solution108 {
 
     public TreeNode sortedArrayToBST(int[] nums) {
         if(nums == null) return null;
