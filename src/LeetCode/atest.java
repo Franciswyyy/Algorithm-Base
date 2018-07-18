@@ -6,24 +6,28 @@ import java.util.List;
 
 public class atest {
 
+    enum Type{
+        A,B,C,D;
+
+
+        static int value = 1;
+        public static int getValue(){
+            return value;
+        }
+
+        String type = "wang";
+        public String getType(){
+            return type;
+        }
+    }
+
     public static void main(String[] args) {
 
-        List<List<Integer>> res = new ArrayList<>();
+        System.out.println(Type.A.getType());
 
-        List<Integer> tmp = Arrays.asList(1,2,3);
-        List<Integer> tmp1 = Arrays.asList(2,3,4);
-        res.add(tmp1);
+        System.out.println(Type.getValue());;
 
-
-        res.add(new ArrayList<>(tmp));
-        /*
-        for(List<Integer> i : res){
-            System.out.println(i);
-        }*/
-
-        System.out.println(res);
-        tmp1.set(1,54);
-        tmp.set(1,44);
-        System.out.println(res);
     }
+
+
 }
