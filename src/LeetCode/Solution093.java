@@ -10,21 +10,26 @@ public class Solution093 {
 
         List<String> res = new ArrayList<String>();
 
-        if(s == null || s.length() == 0 || s.length() < 4 || s.length() > 12) return res;
-
-        helper(s, 0, 0,"", res);
+        helper(s, 0,"", res);
 
         return res;
     }
 
-    private void helper(String ip, int idx, int count, String restored, List<String> res){
+    private void helper(String s, int start, String tmp, List<String> res){
 
-
-        for(int i = 1; i < 4; i ++){
-            if(idx + i > ip.length()) break;
-            String s = ip.substring(idx, idx+i);
-            if((s.startsWith("0") && s.length() > 1) || (i==3 && Integer.parseInt(s) >= 256)) continue;
-            helper(ip, idx+i, count+1, restored + s + (count == 3 ? "" : "."), res);
+        if(start == 4){
+            if(s.length()==0) res.add(tmp.substring(0,tmp.length()-1));
+            //substring here to get rid of last '.'
+            return;
         }
+
+        for(int k = 1; k <= 3; k ++){
+            if(s.length() < k) continue;
+            int val = Integer.parseInt(s.substring(0,k));
+            if(val > 255 || k != String.valueOf(val).length()) continue;
+             /*in the case 010 the parseInt will return len=2 where val=10, but k=3, skip this.*/
+            helper(s.substring(k),start+1, tmp + s.substring(0,k)+".",res);
+        }
+
     }
 }
