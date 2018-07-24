@@ -1,11 +1,8 @@
 package LeetCode;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-public class Solution417 {
+public class Solution417BFS {
 
 
     int[][] directed = new int[][]{{1,0}, {-1,0}, {0,1}, {0,-1}};
@@ -69,6 +66,17 @@ public class Solution417 {
 
     private boolean isArea(int x, int y){
         return x >= 0 && x < m && y >= 0 && y < n;
+    }
+
+    public static void main(String[] args) {
+        int[][] num = {{1}};
+        Solution417BFS s= new Solution417BFS();
+        List<int[]> res = s.pacificAtlantic(num);
+        Iterator<int[]> it = res.iterator();
+        while(it.hasNext()){
+            int[] cur = it.next();
+            System.out.println(cur[0] + "." + cur[1]);
+        }
     }
 
 }
