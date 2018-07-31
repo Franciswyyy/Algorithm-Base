@@ -37,6 +37,7 @@ public class Solution279 {
         throw  new IllegalStateException("No Solution");
     }
 
+    // 记忆化搜索
 
     public static int numSquare(int n){
         int[] record = new int[n+1];
