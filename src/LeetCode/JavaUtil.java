@@ -6,6 +6,24 @@ import java.util.PriorityQueue;
 public class JavaUtil {
 
 
+    //判断字母是大小写
+    public static void UppserOrLower(String str){
+        StringBuffer upper = new StringBuffer();
+        StringBuffer lower = new StringBuffer();
+
+        for(int i = 0; i < str.length(); i ++){
+            Character c = str.charAt(i);
+            if(Character.isUpperCase(c)){
+                upper.append(c);
+            }else if(Character.isLowerCase(c)){
+                lower.append(c);
+            }
+        }
+        System.out.println("大写字母：" + upper);
+        System.out.println("小写字母：" + lower);
+    }
+
+    // 最小堆写法以及最大堆
     public static void priority(){
 
         // 默认的priorityQueue,底层是最小堆
@@ -79,6 +97,7 @@ public class JavaUtil {
     }
 
     public static void main(String[] args) {
-        priority();
+//        priority();
+        UppserOrLower("ASFdjfkGMCHIEjfdkasGHDH");
     }
 }
