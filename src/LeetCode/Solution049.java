@@ -21,7 +21,7 @@ public class Solution049 {
 
     public static void main(String[] args) {
         Map<Integer,String> map = new HashMap();
-        map.put(1, "wang");
+        map.put(1, "Algorithm");
         map.put(2, "yu");
         map.put(3,"wnagyu");
         List<String> list = new ArrayList<>(map.values());

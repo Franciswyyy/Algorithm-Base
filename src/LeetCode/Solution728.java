@@ -19,4 +19,22 @@ public class Solution728 {
     }
 
 
+
+    public List<Integer> selfDividingNumbers1(int left, int right) {
+
+        List<Integer> res = new ArrayList<>();
+        for(int i = left; i <= right; i ++){
+            int cur = i;
+            while(cur != 0){
+                int single = cur % 10;
+                if(i % single != 0) break;
+                cur /= 10;
+            }
+            if(cur == 0) res.add(i);
+        }
+        return res;
+    }
+
+
+
 }
