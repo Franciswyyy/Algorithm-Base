@@ -1,9 +1,75 @@
 package LeetCode;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class JavaUtil {
+
+    // map的操作
+    public static void hashMap(HashMap<Integer,Integer> map){
+
+        // 遍历方式一
+        Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Integer> entry = iterator.next();
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+        }
+
+        // 遍历方式二
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+        }
+
+
+    }
+
+
+
+    // lambda表达式
+    public static void lambda(){
+
+        // 输出遍历
+        Arrays.asList("a", "b", "c").forEach(e -> System.out.println(e));
+
+        List<String> list = Arrays.asList("a", "b", "c", "d");
+        list.forEach(System.out :: println);
+        list.forEach((s) -> System.out.println("!"+s+"~"));    //对参数进行修改
+
+        // 过滤
+        List<String> filter = list.stream()
+                .filter((x) -> x.length()>2)
+                .collect(Collectors.toList());
+    }
+
+
+
+
+    //一维，二维数组大小排序
+    public static void ArraySort(Integer[] arr, int[][] nums){
+
+        Arrays.sort(nums, (a, b) -> (a[0] - b[0]));    //按照第一个元素从小到大
+        Arrays.sort(nums, (a, b) -> (a[1] - b[1]));    // 按照第二个元素从小打大
+
+
+        Arrays.sort(arr, ((a,b) -> (a.compareTo(b))));   // 从小到大
+        Arrays.sort(arr, ((a,b) -> (b.compareTo(a))));  // 从大到小
+
+
+    }
+    private static void print(Integer[] arr){
+        for(int a : arr) System.out.print(a + " ");
+        System.out.println();
+    }
+    private static void print(int[][] arr){
+        for(int i = 0; i < arr.length; i ++){
+            for(int j = 0; j  < arr[0].length; j ++){
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 
 
     //判断字母是大小写
@@ -98,6 +164,9 @@ public class JavaUtil {
 
     public static void main(String[] args) {
 //        priority();
-        UppserOrLower("ASFdjfkGMCHIEjfdkasGHDH");
+//        UppserOrLower("ASFdjfkGMCHIEjfdkasGHDH");
+        Integer[] arr = new Integer[]{4,2,5,1,7,6};
+        int[][] num = new int[][]{{1,4},{3,6},{2,3},{6,2}};
+        ArraySort(arr, num);
     }
 }
