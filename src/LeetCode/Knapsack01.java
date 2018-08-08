@@ -80,7 +80,7 @@ public class Knapsack01 {
         for(int i = 1; i < n; i ++){
             // 从后往前遍历
             for(int j = c; j >= w[i]; j --)
-                memo[j] = Math.max(memo[j], memo[j - w[i]]);
+                memo[j] = Math.max(memo[j], memo[j - w[i]] + v[i]);
         }
         return memo[c];
     }
