@@ -2,6 +2,10 @@ package WorkPrepare.Tencent2017Intern;
 
 import java.util.Scanner;
 
+
+/*
+    字符串的大写字母在后面，保持相对位置不变，要求原地
+ */
 public class Solution02 {
 
     public static void main(String[] args) {
@@ -22,12 +26,10 @@ public class Solution02 {
             Character c = chars[i];
             // 插入排序
             if(Character.isLowerCase(c)){
-                char tmp = chars[i];
                 int j = i;
                 for(; j-1 >= index; j --){
                     chars[j] = chars[j-1];
                }
-               chars[j] = tmp;
                 chars[index++] = c;
             }
         }

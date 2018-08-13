@@ -1,9 +1,9 @@
-package LeetCode;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class JavaUtil {
+
 
     // map的操作
     public static void hashMap(HashMap<Integer,Integer> map){
