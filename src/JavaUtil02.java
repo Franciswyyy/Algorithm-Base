@@ -1,6 +1,58 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.*;
 
 public class JavaUtil02 {
+
+   //tree map从value从小到大排序
+    //正常情况下Map是不可以使用Collections.sort()方法进行排序的，不过可以将Map转换成list之后再进行排序。
+    public static void treeMapTest02(){
+        Map<String, String> map = new TreeMap<String, String>();
+        map.put("b", "ccccc");
+        map.put("d", "bbbbb");
+        map.put("c", "aaaaa");
+        map.put("a", "ddddd");
+        List<Map.Entry<String,String>> list = new ArrayList<Map.Entry<String,String>>(map.entrySet());
+        //然后通过比较器来实现排序
+        Collections.sort(list,new Comparator<Map.Entry<String,String>>() {
+            //升序排序
+            public int compare(Map.Entry<String, String> o1,
+                               Map.Entry<String, String> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+
+        });
+
+        for(Map.Entry<String,String> mapping:list){
+            System.out.println(mapping.getKey()+":"+mapping.getValue());
+        }
+
+
+    }
+
+    //tree map认是key从小到大
+    public static void treeMapTest01(){
+        Map<String, String> map = new TreeMap<String, String>(
+                new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        return o2.compareTo(o1); // key从大到小。
+//                        return o1.compareTo(o2);  key从大到小的
+                    }
+                }
+        );
+        map.put("b", "ccccc");
+        map.put("d", "bbbbb");
+        map.put("c", "aaaaa");
+        map.put("a", "ddddd");
+        Iterator<Map.Entry<String,String>> iter = map.entrySet().iterator();
+        while(iter.hasNext()){
+            Map.Entry<String,String> entry = iter.next();
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+    }
+
+
 
     // 二分查找
     public static void BinaryTest(){
@@ -65,7 +117,9 @@ public class JavaUtil02 {
 
     public static void main(String[] args) {
 //        TreeMapTest();
-        BinaryTest();
+//        BinaryTest();
+//        treeMapTest();
+        treeMapTest02();
     }
 
 }
