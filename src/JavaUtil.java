@@ -4,6 +4,11 @@ import java.util.stream.Collectors;
 
 public class JavaUtil {
 
+    //用递归求一个n个数的和
+    public static int AddRecursive(int n){
+        return n < 0 ? 0 : n + AddRecursive(n-1);
+    }
+
 
     // map的操作
     public static void hashMap(HashMap<Integer,Integer> map){
