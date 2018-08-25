@@ -15,7 +15,6 @@ public class Solution110 {
 
     private int depth(TreeNode root){
         if(root == null) return 0;
-        int dep = 0;
         return Math.max(depth(root.right) + 1, depth(root.left) + 1);
     }
 }
