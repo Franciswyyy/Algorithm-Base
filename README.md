@@ -1,4 +1,5 @@
-# Algorithm-Base
-基本常见的算法面试题~
-## 排序
-## 查找
+# LeetCode-Algorithm
+
+平时刷的LeetCode以及最基本的算法数据结构
+
+## 待整理..
