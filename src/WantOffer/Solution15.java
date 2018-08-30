@@ -15,8 +15,8 @@ public class Solution15 {
         }
         while(pre.next != null){
             pre = pre.next;
-        }
             cur = cur.next;
+        }
         return cur;
     }
 }
