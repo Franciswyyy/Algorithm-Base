@@ -30,7 +30,7 @@ public class Solution03 {
 
         int rows = array.length;
         int cols = array[0].length;
-        int r = 0, c = cols-1; //从左上角开始
+        int r = 0, c = cols-1; //从右上角开始
         while(r <= rows-1 && c >= 0){
             if(target == array[r][c])
                 return true;
