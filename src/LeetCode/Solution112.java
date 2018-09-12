@@ -9,19 +9,19 @@ public class Solution112 {
         if(root.right == null && root.left == null)   // 叶子节点
             return root.val == sum;
 
-
-        if(hasPathSum(root.left, sum - root.val))
-            return true;
-
-        if(hasPathSum(root.right, sum - root.val))
-            return true;
-
-        return false;
-
-
-        /*
         return hasPathSum(root.left, sum - root.val) ||
                 hasPathSum(root.right, sum - root.val);
-        */
+
+
+
+//        if(hasPathSum(root.left, sum - root.val))
+//            return true;
+//
+//        if(hasPathSum(root.right, sum - root.val))
+//            return true;
+//
+//        return false;
+
+
     }
 }

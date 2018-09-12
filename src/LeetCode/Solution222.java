@@ -6,32 +6,42 @@ import java.util.Queue;
 public class Solution222 {
 
 
-    // 如果不超时，则就计算其深度，通过完全二叉树的性质来计算总共的节点
+    public int countNodes2(TreeNode root){
+        if(root == null) return 0;
+        int lh = height1(root.left);
+        int rh = height1(root.right);
+        if(lh == rh){
+            return (1 << lh) + countNodes2(root.right);    // 根节点  1 + 1<<lh -1
+        }else{
+            return (1 << rh) + countNodes2(root.left);
+        }
+    }
+    private int height1(TreeNode root){
+        if(root == null) return 0;
+        return 1 + height1(root.left);
+    }
+
+
     public int countNodes1(TreeNode root){
-        int ld = leftDepth(root.left);
-        int rd = rightDepth(root.right);
-
-        if(ld == rd) return (1 << ld) -1;
-        else return 1 + countNodes1(root.right) + countNodes1(root.left);
+       int h = height(root);
+       int num = 0;
+       while(root != null){
+           if(h-1 == height(root.right)){
+               num += 1 << h;
+               root = root.right;
+           }else {
+               num += 1 << h-1;
+               root = root.left;
+           }
+           h--;
+       }
+       return num;
+    }
+    private int height(TreeNode root){
+        return root == null ? 0 : height(root.left) + 1;
     }
 
-    private int leftDepth(TreeNode root){
-        int dep = 0;
-        while(root != null){
-            dep ++;
-            root = root.left;
-        }
-        return dep;
-    }
 
-    private int rightDepth(TreeNode root){
-        int dep = 0;
-        while(root != null){
-            dep ++;
-            root = root.right;
-        }
-        return dep;
-    }
 
 
     // 超时，过不了，因为对栈的内存有要去，而且时间复杂度为与深度有关。
