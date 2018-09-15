@@ -1,4 +1,3 @@
-import javafx.util.Pair;
 
 import java.util.*;
 
@@ -6,64 +5,29 @@ public class test {
 
 
     public static void main(String[] args) {
-        System.out.println(helper("aaasdfssseeeeggggaaaaaxxxxxsssccccc"));
+       Scanner sc = new Scanner(System.in);
+       while(sc.hasNext()){
+           String str = sc.nextLine();
+           System.out.println(helper(str));
+       }
     }
 
-    public static String helper(String str){
+    public static int helper(String str){
+        int back = str.charAt(3)-'0'+str.charAt(5)-'0'+str.charAt(4)-'0';
+        int one = str.charAt(0) - '0';
+        int two = str.charAt(1) - '0';
+        int three = str.charAt(2) - '0';
+        int front = one + two + three;
 
-        if(str == null) return null;
+        if(front == back) return 0;
+        int need = back - front;
+        int requireMax = Math.max(9-one, Math.max(9-two, 9-three));
+        int requireMin = Math.min(9-one, Math.min(9-two, 9-three));
+        int requireMid = 27-front-requireMax-requireMin;
+        if(requireMax >= need) return 1;
 
-        HashMap<Character, Integer> map = new HashMap();
-
-
-        char[] chars = str.toCharArray();
-
-        boolean flag = true;
-        int start = 1;
-        for(int i = 1 ; i < chars.length; i ++){
-            if(chars[i] == chars[i-1] && i != chars.length-1){
-                start = flag ? i-1 : start;
-                flag = false;
-            }else{
-                if(i == chars.length-1){
-                    map.put(str.charAt(i),i-start+1);
-                    break;
-                }
-                map.put(str.charAt(i-1),i-start);
-                flag = true;
-
-            }
-
-        }
-
-
-        int max = 0;
-        Character c = '0';
-       for(Map.Entry<Character, Integer> entry: map.entrySet()){
-            if(entry.getValue() > max){
-                c = entry.getKey();
-                max = entry.getValue();
-            }else if(entry.getValue() == max){
-                if(entry.getKey() < c){
-                    c = entry.getKey();
-                }
-            }
-       }
-
-       StringBuffer sb = new StringBuffer();
-        while(max != 0){
-            sb.append(c);
-            max--;
-        }
-        return String.valueOf(sb);
-
-}
-
-    public static int helper1(int[] nums){
-
-        int k = nums[nums.length-1];
-        int[] res = new int[nums.length-1];
-        return 0;
+        else if(requireMid + requireMax > need) return 2;
+        return 3;
     }
 
 }
