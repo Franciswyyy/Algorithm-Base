@@ -19,6 +19,9 @@ public class test {
         int three = str.charAt(2) - '0';
         int front = one + two + three;
 
+
+
+// 错误用例
         if(front == back) return 0;
         int need = back - front;
         int requireMax = Math.max(9-one, Math.max(9-two, 9-three));
